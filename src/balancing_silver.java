@@ -1,7 +1,9 @@
 import utils.Kattio;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
 
 public class balancing_silver {
     public static void main(String[] args) throws IOException {
@@ -20,10 +22,14 @@ public class balancing_silver {
                 yCoords.add(y);
             pairs[i] = new Pair<>(x, y);
         }
+        Collections.sort(xCoords);
+        Collections.sort(yCoords);
 
-        int max = 100;
-        for (int x : xCoords) {
-            for (int y : yCoords) {
+        int max = Integer.MAX_VALUE;
+        for (int i = xCoords.size() / 4; i < xCoords.size() * 3 / 4; i++) {
+            int x = xCoords.get(i);
+            for (int j = yCoords.size() / 4; j < yCoords.size() * 3 / 4; j++) {
+                int y = yCoords.get(j);
                 int ne = 0;
                 int nw = 0;
                 int se = 0;
